@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
-import ExampleComponent from 'ttp-react-ui'
+import { NotFound } from 'ttp-react-ui'
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <NotFound />
       </div>
     )
   }

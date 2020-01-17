@@ -5,7 +5,8 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
-
+import json from '@rollup/plugin-json';
+import alias from 'rollup-plugin-alias';
 import pkg from './package.json'
 
 export default {
@@ -25,15 +26,24 @@ export default {
   plugins: [
     external(),
     postcss({
-      modules: true
+      extract: false,
+      modules: true,
+      use: ['sass'],
+    }),
+    alias({
+      resolve: ['.jsx', '.js'],
+      entries: {
+        i18n: 'src/i18n/index.js',
+      }
     }),
     url(),
     svgr(),
     babel({
-      exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
+      plugins: ['external-helpers'],
+      exclude: ['node_modules/**', '**/*.json']
     }),
     resolve(),
-    commonjs()
+    commonjs(),
+    json()
   ]
 }
