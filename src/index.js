@@ -1,2 +1,2 @@
-export NotFound from './components/NotFound/NotFound';
-export Footer from './components/Footer/Footer';
+export * from './components/NotFound/NotFound';
+export * from './components/Footer/Footer';

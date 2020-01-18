@@ -4,7 +4,7 @@ import * as animationData from "./lottie-animations/error-404.json"
 import lottie from 'lottie-web';
 import styles from './NotFound.scss';
 
-class NotFound extends Component {
+export class NotFound extends Component {
 
     componentDidMount() {
         lottie.loadAnimation({
@@ -40,5 +40,3 @@ class NotFound extends Component {
         );
     }
 }
-
-export default NotFound
