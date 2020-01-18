@@ -1,10 +1,10 @@
 {
-  "name": "ttp-react-ui",
+  "name": "@lidrissi/ttp-react-ui",
   "version": "1.0.0",
   "description": "A collection of tamtam react component",
   "author": "lidrissi",
   "license": "MIT",
-  "repository": "lidrissi/ttp-react-ui",
+  "repository": "git://github.com/lidrissi/ttp-react-ui.git",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
