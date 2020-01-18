@@ -1,14 +1,19 @@
 .not_found {
-    background: #FFF;
+    background: transparent;
     margin: 2rem auto;
     color: #2C394B;
     font-size: 1.5rem;
+    font-family: Roboto;
     &__main {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-  
+      h2, h5, h4 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+      }
       h3 {
         font-size: 64px;
         line-height: 72px;
@@ -28,7 +33,3 @@
       align-items: center;
     }
   }
-  .not-found-iframe{
-    width: 750px;
-  }
-  

@@ -39,7 +39,6 @@ const styleLoader = devMode ? 'style-loader' : MiniCssExtractPlugin.loader;
 module.exports = {
     entry: './src/index.js',
     output: {
-        //publicPath: '/',
         path: path.join(__dirname, 'dist'),
         filename: 'index.js',
         library: '',
@@ -61,6 +60,7 @@ module.exports = {
         ],
         alias: {
             i18n: path.resolve(__dirname, "src/i18n/index.js"),
+            applicationStyles: path.resolve(__dirname, "src/styles/app.scss"),
         },
         extensions: ['.js', '.jsx']
     },
@@ -72,6 +72,14 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/
             },
             {
+                test: /\.(eot|ttf)$/,
+                loader: 'file-loader?name=./fonts/[name].[ext]',
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|png|jpg|gif|svg)$/,
+                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+            },
+            {
                 test: /\.(sa|sc|c)ss$/,
                 exclude: /\.module\.(sa|sc|c)ss$/,
                 use: [styleLoader, CSSLoader, PostCSSLoader, "sass-loader"]
@@ -79,8 +87,17 @@ module.exports = {
             {
                 test: /\.module\.(sa|sc|c)ss$/,
                 use: [styleLoader, CSSModuleLoader, PostCSSLoader, "sass-loader"]
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-url-loader',
+                exclude: /node_modules/
             }
         ]
     },
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, "public"),
+        port: 3030
+    }
 };

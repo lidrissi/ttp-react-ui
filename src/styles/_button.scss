@@ -1,0 +1,49 @@
+.ttp-button {
+    min-width: 180px;
+    padding: 0 1rem;
+    height: 44px;
+    border: 1px solid rgba(199, 232, 254, 0.5);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(41, 57, 77, 0.1);
+    border-radius: 30px;
+    font-family: Roboto;
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    margin-left: 22px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    img {
+      margin-right: 12px;
+    }
+
+    &.secondary {
+      background: #FFFFFF;
+      letter-spacing: 0.06em;
+      color: #18A0FB;
+    }
+
+    &.primary {
+      background: #06D9B1;
+      letter-spacing: 0.04em;
+      color: #FFFFFF;
+    }
+
+    &.disabled {
+      background: #F8F9FA;
+      letter-spacing: 0.04em;
+      color: #6D7F92;
+      &:hover {
+        cursor: not-allowed;
+      };
+    }
+  }
