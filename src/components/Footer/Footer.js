@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'i18n';
-import styles from './Footer.scss';
+import styles from './Footer.module.scss';
 
 export const Footer = () => (
   <footer>

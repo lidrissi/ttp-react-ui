@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'i18n';
 import * as animationData from "./lottie-animations/error-404.json"
 import lottie from 'lottie-web';
-import styles from './NotFound.scss';
+import styles from './NotFound.module.scss';
 
 export class NotFound extends Component {
 

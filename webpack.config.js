@@ -1,6 +1,40 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const isDevelopment = true;
+const autoprefixer = require('autoprefixer');
+
+const devMode = process.env.NODE_ENV !== 'production';
+
+const CSSModuleLoader = {
+    loader: 'css-loader',
+    options: {
+        modules: true,
+        importLoaders: 2,
+        sourceMap: false,
+    }
+}
+const CSSLoader = {
+    loader: 'css-loader',
+    options: {
+        modules: "global",
+        importLoaders: 2,
+        sourceMap: false,
+    }
+}
+
+const PostCSSLoader = {
+    loader: 'postcss-loader',
+    options: {
+        ident: 'postcss',
+        sourceMap: false,
+        plugins: () => [
+            autoprefixer({
+                browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9']
+            })
+        ]
+    }
+}
+
+const styleLoader = devMode ? 'style-loader' : MiniCssExtractPlugin.loader;
 
 module.exports = {
     entry: './src/index.js',
@@ -38,37 +72,13 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/
             },
             {
-                test: /\.module\.s(a|c)ss$/,
-                loader: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            sourceMap: isDevelopment
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: isDevelopment
-                        }
-                    }
-                ]
+                test: /\.(sa|sc|c)ss$/,
+                exclude: /\.module\.(sa|sc|c)ss$/,
+                use: [styleLoader, CSSLoader, PostCSSLoader, "sass-loader"]
             },
             {
-                test: /\.s(a|c)ss$/,
-                exclude: /\.module.(s(a|c)ss)$/,
-                loader: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: isDevelopment
-                        }
-                    }
-                ]
+                test: /\.module\.(sa|sc|c)ss$/,
+                use: [styleLoader, CSSModuleLoader, PostCSSLoader, "sass-loader"]
             }
         ]
     },
