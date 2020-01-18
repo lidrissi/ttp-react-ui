@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
+import serve from 'rollup-plugin-serve';
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
@@ -39,11 +40,12 @@ export default {
     url(),
     svgr(),
     babel({
-      plugins: ['external-helpers'],
-      exclude: ['node_modules/**', '**/*.json']
+      exclude: ['node_modules/**', '**/*.json'],
+      plugins: ['external-helpers']
     }),
     resolve(),
     commonjs(),
-    json()
+    json(),
+    serve({ contentBase: 'public' })
   ]
 }
