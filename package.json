@@ -1,6 +1,6 @@
 {
   "name": "@lidrissi/ttp-react-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of tamtam react component",
   "author": "lidrissi",
   "license": "MIT",
@@ -17,7 +17,6 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "webpack",
     "start": "webpack -w",
-    "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
   },
